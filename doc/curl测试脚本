@@ -1,0 +1,79 @@
+
+
+//校验token
+curl http://123.56.100.237:3000/api/auth/token?appid=appid1\&appkey=appkey1
+
+//校验设备编号
+curl http://123.56.100.237:3000/api/dev/check/YB20825V12630L02UOS264038275
+
+
+
+//用户注册
+curl http://123.56.100.237:3000/api/user/reg -H "content-type:application/json" -d "{\"username\":\"yddtest5\", \"passwd\":\"yddtest5\",\"email\":\"ydd_test5@ydd.com\",\"access_token\":\"8zxxXlImmiRr6KMfvgvUSOG3Q7E\"}"
+
+//用户登陆
+ curl http://123.56.100.237:3000/api/user/login -H "content-type:application/json" -d "{\"username\":\"yddtest5\", \"passwd\":\"yddtest4\", \"access_token\":\"8zxxXlImmiRr6KMfvgvUSOG3Q7E\"}"
+
+//更新用户
+curl http://123.56.100.237:3000/api/user/edit -H "content-type:application/json" -d "{\"username\":\"yddtest5\", \"oldpasswd\":\"yddtest4\", \"newpasswd\":\"yddtest4\", \"email\":\"ydd_test444@ydd.com\", \"access_token\":\"8zxxXlImmiRr6KMfvgvUSOG3Q7E\"}"
+
+//绑定设备和餐厅
+curl http://123.56.100.237:3000/api/dev/bind/YB20825V12630L02UOS264448273/rest_1?access_token=ael7EYEkM0CtR6hM0ZjPj8IYNNc
+
+//解绑设备和餐厅
+curl http://123.56.100.237:3000/api/dev/unbind/YB20825V12630L02UOS264448273/rest_1?access_token=ael7EYEkM0CtR6hM0ZjPj8IYNNc
+
+##################
+//添加菜品类型
+curl http://123.56.100.237:3000/api/dishcate/add -H "Content-Type:application/json" -d "{\"restid\":12,\"catename\":\"川菜\",\"status\":1, \"note\":\"dish category note12\", \"weight\":13, \"access_token\":\"X1xRgrlbO4E85Jv3rxMrALyukXs\"}"
+
+//修改菜品类型
+curl http://123.56.100.237:3000/api/dishcate/edit -H "Content-Type:application/json" -d "{\"restid\":12,\"catename\":\"粤菜(潮州菜)\",\"status\":1, \"note\":\"dish category note1\", \"weight\":10, \"access_token\":\"X1xRgrlbO4E85Jv3rxMrALyukXs\"}"
+
+//获取菜品类型
+curl http://123.56.100.237:3000/api/dishcate/detail/39?access_token=X1xRgrlbO4E85Jv3rxMrALyukXs
+
+//删除类型
+curl http://123.56.100.237:3000/api/dishcate/remove/39 -H "Content-Type:application/json" -d "{\"access_token\":\"X1xRgrlbO4E85Jv3rxMrALyukXs\"}"
+#################
+
+//添加餐厅
+curl http://123.56.100.237:3000/api/rest/add -H "Content-Type:application/json" -d "{\"userId\" : 100,\"restname\" : \"rest_name_1\", \"addr\" : {\"name\" : \"北京\", \"name_en\" : \"bj\",\"level1_id\" : 1,\"level2_id\": 35,\"level3_id\" : 36,\"top_id\" : 0, \"address\" : \"门头沟镇某某地点\",\"lat\" : 34.000291,\"lng\": 108.892744},\"desc\" : \"rest_desc_1\",\"contact\" : \"rest_contact_1\",\"phone\" : \"rest_phone_1\",\"email\" :\"rest_email_1\",\"reg_time\" : \"rest_reg_time_1\",\"allowdistance\" : 5,\"roadphone\" : \"028888888\",\"logo\" : \"rest_logo_1\",\"access_token\" :\"8zxxXlImmiRr6KMfvgvUSOG3Q7E\"}"
+
+//修改餐厅
+curl http://123.56.100.237:3000/api/rest/edit -H "Content-Type:application/json" -d "{\"restid\":2592, \"userId\" : 100,\"restname\" : \"rest_name_1\",\"addr\" : {\"name\" : \"北京\", \"name_en\" : \"bj\",\"level1_id\" : 1,\"level2_id\": 35,\"level3_id\" : 36,\"top_id\" : 0, \"address\" : \"门头沟镇某某地点\",\"lat\" : 34.000291,\"lng\": 108.892744},\"desc\" : \"rest_desc_1\",\"contact\" : \"rest_contact_1\",\"phone\" : \"rest_phone_1\",\"email\" :\"rest_email_1\",\"reg_time\" : \"rest_reg_time_1\",\"allowdistance\" : 2,\"roadphone\" : \"028888888\",\"logo\" : \"rest_logo_1\",\"access_token\" :\"8zxxXlImmiRr6KMfvgvUSOG3Q7E\"}"
+
+//餐厅详细信息
+curl http://123.56.100.237:3000/api/rest/detail/2592?access_token=8zxxXlImmiRr6KMfvgvUSOG3Q7E
+
+//餐厅列表
+ curl http://123.56.100.237:3000/api/rest/restlist/100?access_token=8zxxXlImmiRr6KMfvgvUSOG3Q7E
+
+
+//餐厅状态
+curl http://123.56.100.237:3000/api/rest/state/2592?access_token=8zxxXlImmiRr6KMfvgvUSOG3Q7E
+
+
+餐厅数据同步 
+根据设备编号获取绑定的餐厅 
+设备编号验证 
+根据用户uid获取餐厅列表 
+添加/修改餐厅信息  
+绑定餐厅和设备编号  
+解绑餐厅  
+菜品的添加、修改、发布 
+餐厅状态接口
+
+API子系统剩下任务：
+1.餐厅相关接口基本完成，有些细节还需要修改；
+2.菜品相关接口基本完成，还有点不清楚的，详情看邮件；
+3.餐厅和设备绑定、解绑已完成；
+4、餐厅数据同步，未完成；
+5、API接口文档（路由规划文档）及测试脚本。
+
+
+
+
+
+
+
